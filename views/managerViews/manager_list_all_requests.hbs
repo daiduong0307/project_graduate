@@ -1,0 +1,109 @@
+<body id="page-top">
+    <div id="wrapper">
+        <!--=================================================-->
+        {{> staff/subHeader}}
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+
+                {{> staff/topBar}}
+                <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">MY REQUESTS</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/staff/list_all_requests">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Leave Request</li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="/staff/list_all_requests">My
+                                    Requests</a> </li>
+
+                        </ol>
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <!-- Modal Logout -->
+                        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to logout?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-primary"
+                                            data-dismiss="modal">Cancel</button>
+                                        <a href="/" class="btn btn-primary">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!---Container Fluid-->
+
+
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <!-- Simple Tables -->
+                            <div class="card">
+
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Request Type</th>
+                                                <th>Time Request</th>
+                                                <th>Reason</th>
+                                                <th>Business Unit</th>
+                                                <th>Status</th>
+                                                <th>Option</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each Request}}
+                                            <tr>
+                                                <td>{{topic_id.name}}</td>
+                                                <td>{{startDateOff}} To {{endDateOff}} </td>
+                                                <td>{{reason}}</td>
+                                                <td>{{owner_id.businessUnit_id.name}}</td>
+                                                <td>{{status}}</td>
+                                                <td>
+
+                                                    <a href="/staff/update_request/{{_id}}"
+                                                        class="btn btn-outline-success mb-1" value="{{_id}}">Update</a>
+                                                    <form action="/staff/deleteRequest" method="POST"
+                                                        enctype="application/x-www-form-urlencoded">
+
+                                                        <input type="hidden" name="_id" value={{_id}}>
+                                                        <input type="hidden" name="_method" value="DELETE">
+
+                                                        <button type="submit"
+                                                            class="btn btn-outline-danger mb-1">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Row-->
+
+
+
+
+
+                </div>
+            </div>
+
+
+</body>

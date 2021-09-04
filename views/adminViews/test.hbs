@@ -1,0 +1,13 @@
+<form action="/admin/assign_bu_for_manager" method="POST" enctype="application/x-www-form-urlencoded">
+    <input type="text" value="{{manager._id}}" name="manager_id">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="">{{manager.businessUnit_id.name}}</label>
+    <select name="BU_Id" id="">
+        {{#each businessUnit}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+    </select>
+    <label for="">{{title}}</label>
+    <button>subbmit</button>
+
+</form>

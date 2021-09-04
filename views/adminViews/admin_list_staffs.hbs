@@ -1,0 +1,118 @@
+<body id="page-top">
+    <div id="wrapper">
+        <!--=================================================-->
+        {{> admin/subHeader}}
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+
+                {{> admin/topBar}}
+                <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">List of Staff Accounts</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">List of Accounts</li>
+                            <li class="breadcrumb-item active" aria-current="page"><a
+                                    href="/admin/list_all_staffs">Staff ACcounts</a> </li>
+                        </ol>
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <!-- Modal Logout -->
+                        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to logout?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-primary"
+                                            data-dismiss="modal">Cancel</button>
+                                        <a href="/" class="btn btn-primary">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!---Container Fluid-->
+
+
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <!-- Simple Tables -->
+                            <div class="card">
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <a href="/admin/add_staff" class="btn btn-primary mb-1">ADD STAFF</a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Role ID</th>
+                                                <th>Username</th>
+                                                <th>Password</th>
+                                                <th>User ID</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Business Unit</th>
+                                                <th>Option</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each Staff}}
+                                            <tr>
+                                                <td><a href="#">{{account_id._id}}</a></td>
+                                                <td>{{account_id.username}}</td>
+                                                <td>hidden</td>
+                                                <td>{{_id}}</td>
+                                                <td>{{name}}</td>
+                                                <td>{{email}}</td>
+                                                <td><span class="btn btn-sm btn-primary">{{businessUnit_id.name}}</span>
+                                                </td>
+                                                <td>
+
+                                                    <a href="/admin/update_staff/{{_id}}"
+                                                        class="btn btn-outline-success mb-1" value="{{_id}}">Update</a>
+                                                    <form action="/admin/deleteStaff" method="POST"
+                                                        enctype="application/x-www-form-urlencoded">
+
+                                                        <input type="hidden" name="_id" value={{_id}}>
+                                                        <input type="hidden" name="_method" value="DELETE">
+
+                                                        <button type="submit" class="btn btn-outline-danger mb-1">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Row-->
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
